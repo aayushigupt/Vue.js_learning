@@ -1,45 +1,54 @@
 <template>
-<section>
-  <header>  <h1> My Friends </h1> </header>
+  <section>
+    <header><h1>My Friends</h1></header>
     <ul>
-        <friend-contact> </friend-contact>
-        <friend-contact> </friend-contact>
+  <!-- we are binding it dynamically -->
+      <friend-contact
+      v-for="friend in friends"
+      :key="friend.id" 
+        :name="friend.name"
+        :email-address="friend.email"
+        :phone-number="friend.phone"
+        :is-favourite= "friend.isFavourite"
+      >
+      </friend-contact>
+      <!-- <friend-contact name="Aakriti" email-address="aakritisethi1999@gmail.com" phone-number="375834658" is-favourite="0"> </friend-contact> -->
     </ul>
-</section>
+  </section>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            friends: [
-                {
-                    id: 'aayushi',
-                    name: 'Aayushi Gupta',
-                    phone: '6377505602',
-                    email: 'aayushigupta108@gmail.com'
-                },
-                {
-                    id: 'aakriti',
-                    name: 'Aakriti Sethi',
-                    phone: '843563786',
-                    email: 'aakritisethi1999@gmail.com',
-                    
-                }
-
-            ]
-        };
-    }
-}
+  data() {
+    return {
+      friends: [
+        {
+          id: "aayushi",
+          name: "Aayushi Gupta",
+          phone: "6377505602",
+          email: "aayushigupta108@gmail.com",
+          isFavourite: true
+        },
+        {
+          id: "aakriti",
+          name: "Aakriti Sethi",
+          phone: "843563786",
+          email: "aakritisethi1999@gmail.com",
+          isFavourite: false
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -97,6 +106,4 @@ header {
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
-
-
 </style>
