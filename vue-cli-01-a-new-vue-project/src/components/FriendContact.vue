@@ -1,6 +1,7 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavourite ?  '(Favourite)' : ''}}</h2>
+    <h2>{{ name }} {{ isFavourite ?  '(Favourite)' : ''}}</h2>
+    <button @click="$emit('delete', id)"> Delete </button>
     <button @click="toggleDetails">{{ dataVisibility ? 'Hide' : 'Show '}} Details</button>
     <button @click="toggleFavourite"> Switch </button>
     <ul v-if="dataVisibility">
@@ -14,6 +15,10 @@
 //This is the Configuration Object
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -29,10 +34,16 @@ export default {
     isFavourite: {
       type: Boolean,
       required : false,
-      default: "0"
+      default: false
     }
   },
-  data() {
+ emits: [
+   //custom events which will be emit
+   'toggle-favourite',
+   'delete'
+ ],
+ 
+ data() {
     return {
       dataVisibility: false,
       // friend: {
@@ -41,15 +52,16 @@ export default {
       //   phone: "6377505602",
       //   email: "aayushigupta108@gmail.com",
       // },
-      friendIsFavourite: this.isFavourite, //Here it is the recieved prop value
+      // friendIsFavourite: this.isFavourite, //Here it is the recieved prop value
     };
   },
   methods: {
     toggleDetails() {
       this.dataVisibility = !this.dataVisibility;
     },
-    toggleFavourite() {
-     this.friendIsFavourite = !this.friendIsFavourite;
+    toggleFavourite() {  // so that we can listen to the custom event in the vue app
+      this.$emit('toggle-favourite',this.id);
+    //  this.friendIsFavourite = !this.friendIsFavourite;
     }
   },
 };
