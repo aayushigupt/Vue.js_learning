@@ -5,7 +5,7 @@
     <!-- <component :is="activePage"></component> -->
   </main>
   <footer>
-    <router-view> </router-view>
+    <router-view name="footer"> </router-view>
   </footer>
 </template>
 
