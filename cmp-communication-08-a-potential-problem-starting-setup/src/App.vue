@@ -47,7 +47,7 @@ export default {
   //       fullText: 'Events allow you to trigger code on demand',
   //     });
   //   }, 3000);
-  // },
+  // }, 
   methods: {
     activateTopic(topicId) {
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);

@@ -4,7 +4,7 @@
             <label> Name </label>
             <input type="text" v-model="enteredName">
         </div>
-        <div>
+        <div> 
             <label> Phone Number </label>
             <input type="tel" v-model="enteredPhone">
         </div>
@@ -12,7 +12,7 @@
             <label> Email Address </label>
             <input type="email" v-model="enteredEmail">
         </div>
-        <div>
+        <div> 
             <button> Add Friend </button>
         </div>
     </form>
